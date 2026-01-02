@@ -75,6 +75,30 @@ public class MenuController {
             }
         }
 
+        // 코치마다 요일별 메뉴 추천
+        for (DayOfWeek day : DAYS_OF_WEEK) {
+            Category category = categoryOfDay.get(day);
+
+            for (Coach coach : coaches) {
+                while (true) {
+                    String randomMenu = Randoms.shuffle(menusOfCategory.get(category)).get(0);
+
+                    // 못 먹는 메뉴인지
+                    if (coach.getDislikeFoods().contains(randomMenu)) {
+                        continue;
+                    }
+
+                    // 중복인지
+                    if (coach.getMenus().containsValue(randomMenu)) {
+                        continue;
+                    }
+
+                    coach.addMenu(day, randomMenu);
+                    break;
+                }
+            }
+        }
+
 
     }
 
