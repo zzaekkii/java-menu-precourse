@@ -13,11 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 import static menu.domain.Category.*;
-import static menu.domain.DayOfWeek.*;
+import static menu.domain.DayOfWeek.DAYS_OF_WEEK;
 
 public class MenuController {
-
-    private static final DayOfWeek[] DAYS_OF_WEEK = {MON, TUE, WED, THU, FRI};
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -100,6 +98,12 @@ public class MenuController {
         }
 
 
+        /// 서비스 종료
+        // 메뉴 추천 결과 출력
+        outputView.printResult(categoryOfDay, coaches);
+
+        // 서비스 종료 기본 문구 출력
+        outputView.printServiceEnd();
     }
 
     private static Map<Integer, Category> initializeCategoryForRandom() {

@@ -8,10 +8,14 @@ public enum DayOfWeek {
     FRI("금요일"),
     ;
 
-    public static final int DAY_COUNT = 5;
+    public static final DayOfWeek[] DAYS_OF_WEEK = {MON, TUE, WED, THU, FRI};
     private final String description;
 
     DayOfWeek(String description) {
         this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

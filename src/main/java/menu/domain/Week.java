@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Week {
+
     private List<Day> days;
     private Map<Category, Integer> categories;
 
