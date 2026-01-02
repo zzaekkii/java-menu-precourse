@@ -14,4 +14,12 @@ public class OutputView {
     public void printErrorMessage(String message) {
         System.out.println(ERROR_MESSAGE_PREFIX + message);
     }
+
+    public void printDislikeFoodsRequest(String name) {
+        System.out.println(name + "(이)가 못 먹는 메뉴를 입력해 주세요.");
+    }
+
+    public void printBlankLine() {
+        System.out.println();
+    }
 }
