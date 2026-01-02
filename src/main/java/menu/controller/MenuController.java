@@ -1,13 +1,18 @@
 package menu.controller;
 
+import menu.domain.Category;
 import menu.domain.Day;
+import menu.domain.DayOfWeek;
 import menu.domain.coach.Coach;
 import menu.view.InputView;
 import menu.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import static menu.domain.Category.*;
 import static menu.domain.DayOfWeek.DAY_COUNT;
 
 public class MenuController {
@@ -37,8 +42,82 @@ public class MenuController {
         }
 
         /// 카테고리 및 메뉴 추천
-        // 요일별 카테고리 지정
+        // 기본 메뉴 등록
+        Map<Category, List<String>> menusOfCategory = InitializeMenu();
 
+        // 요일별 카테고리 지정
+        // 2개 제한용 맵
+        Map<Category, Integer> categoriesCount = new HashMap<>();
+
+        // 요일별 카테고리
+        Map<DayOfWeek, Category> categoryOfDay = new HashMap<>();
+
+
+    }
+
+    private static Map<Category, List<String>> InitializeMenu() {
+        Map<Category, List<String>> menusOfCategory = new HashMap<>();
+        List<String> japaneseFoods = new ArrayList<>(9);
+        japaneseFoods.add("규동");
+        japaneseFoods.add("우동");
+        japaneseFoods.add("미소시루");
+        japaneseFoods.add("스시");
+        japaneseFoods.add("가츠동");
+        japaneseFoods.add("오니기리");
+        japaneseFoods.add("하이라이스");
+        japaneseFoods.add("라멘");
+        japaneseFoods.add("오코노미야끼");
+
+        List<String> koreanFoods = new ArrayList<>(9);
+        koreanFoods.add("김밥");
+        koreanFoods.add("김치찌개");
+        koreanFoods.add("쌈밥");
+        koreanFoods.add("된장찌개");
+        koreanFoods.add("비빔밥");
+        koreanFoods.add("칼국수");
+        koreanFoods.add("불고기");
+        koreanFoods.add("떡볶이");
+        koreanFoods.add("제육볶음");
+
+        List<String> chineseFoods = new ArrayList<>(9);
+        chineseFoods.add("깐풍기");
+        chineseFoods.add("볶음면");
+        chineseFoods.add("동파육");
+        chineseFoods.add("짜장면");
+        chineseFoods.add("짬뽕");
+        chineseFoods.add("마파두부");
+        chineseFoods.add("탕수육");
+        chineseFoods.add("토마토 달걀볶음");
+        chineseFoods.add("고추잡채");
+
+        List<String> asianFoods = new ArrayList<>(9);
+        asianFoods.add("팟타이");
+        asianFoods.add("카오 팟");
+        asianFoods.add("나시고렝");
+        asianFoods.add("파인애플 볶음밥");
+        asianFoods.add("쌀국수");
+        asianFoods.add("똠얌꿍");
+        asianFoods.add("반미");
+        asianFoods.add("월남쌈");
+        asianFoods.add("분짜");
+
+        List<String> westernFoods = new ArrayList<>(9);
+        westernFoods.add("라자냐");
+        westernFoods.add("그라탱");
+        westernFoods.add("뇨끼");
+        westernFoods.add("끼슈");
+        westernFoods.add("프렌치 토스트");
+        westernFoods.add("바게트");
+        westernFoods.add("스파게티");
+        westernFoods.add("피자");
+        westernFoods.add("파니니");
+
+        menusOfCategory.put(JAPANESE, japaneseFoods);
+        menusOfCategory.put(KOREAN, koreanFoods);
+        menusOfCategory.put(CHINESE, chineseFoods);
+        menusOfCategory.put(ASIAN, asianFoods);
+        menusOfCategory.put(WESTERN, westernFoods);
+        return menusOfCategory;
     }
 
     private List<String> requestCoachNames() {
