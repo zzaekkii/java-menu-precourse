@@ -1,11 +1,14 @@
 package menu.controller;
 
+import menu.domain.Day;
 import menu.domain.coach.Coach;
 import menu.view.InputView;
 import menu.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static menu.domain.DayOfWeek.DAY_COUNT;
 
 public class MenuController {
 
@@ -32,6 +35,10 @@ public class MenuController {
 
             coaches.add(new Coach(name, dislikes));
         }
+
+        /// 카테고리 및 메뉴 추천
+        // 요일별 카테고리 지정
+
     }
 
     private List<String> requestCoachNames() {
