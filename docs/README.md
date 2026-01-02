@@ -56,10 +56,10 @@
 - [x] 카테고리를 key로 map에 저장할 때, 메뉴 목록을 `List<String>` 형태로 저장한다.
 ### b. 요일별 메뉴 카테고리 결정
 - 조건
-- [ ] 같은 카테고리는 최대 2회까지만 가능
-- [ ] 추천할 카테고리는 `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms.pickNumberInRange()`에서 생성한 값을 활용
-- [ ] `Randoms.pickNumberInRange()`의 결과가 1이면 일식, 2면 한식, 3이면 중식, 4면 아시안, 5면 양식을 추천
-- [ ] 추천할 수 없는 카테고리인 경우 다시 `Randoms.pickNumberInRange()`를 통해 임의의 값을 생성
+- [x] 같은 카테고리는 최대 2회까지만 가능
+- [x] 추천할 카테고리는 `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms.pickNumberInRange()`에서 생성한 값을 활용
+- [x] `Randoms.pickNumberInRange()`의 결과가 1이면 일식, 2면 한식, 3이면 중식, 4면 아시안, 5면 양식을 추천
+- [x] 추천할 수 없는 카테고리인 경우 다시 `Randoms.pickNumberInRange()`를 통해 임의의 값을 생성
 ### c. 요일마다 각 코치 메뉴 추천
 - 조건
 - [ ] 각 코치에게 중복되지 않는 메뉴를 추천해야 한다

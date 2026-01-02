@@ -1,7 +1,7 @@
 package menu.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import menu.domain.Category;
-import menu.domain.Day;
 import menu.domain.DayOfWeek;
 import menu.domain.coach.Coach;
 import menu.view.InputView;
@@ -13,9 +13,11 @@ import java.util.List;
 import java.util.Map;
 
 import static menu.domain.Category.*;
-import static menu.domain.DayOfWeek.DAY_COUNT;
+import static menu.domain.DayOfWeek.*;
 
 public class MenuController {
+
+    private static final DayOfWeek[] DAYS_OF_WEEK = {MON, TUE, WED, THU, FRI};
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -43,19 +45,50 @@ public class MenuController {
 
         /// 카테고리 및 메뉴 추천
         // 기본 메뉴 등록
-        Map<Category, List<String>> menusOfCategory = InitializeMenu();
+        Map<Category, List<String>> menusOfCategory = initializeMenu();
 
         // 요일별 카테고리 지정
         // 2개 제한용 맵
         Map<Category, Integer> categoriesCount = new HashMap<>();
 
-        // 요일별 카테고리
+        // 요구사항에서 제시한 랜덤 카테고리 추출용 맵
+        Map<Integer, Category> categories = initializeCategoryForRandom();
+
+        // 요일별 카테고리 생성
         Map<DayOfWeek, Category> categoryOfDay = new HashMap<>();
+        for (DayOfWeek day : DAYS_OF_WEEK) {
+            while (true) {
+                Category randomCategory = categories.get(Randoms.pickNumberInRange(1, 5));
+
+                if (!categoriesCount.containsKey(randomCategory)) {
+                    categoryOfDay.put(day, randomCategory);
+                    categoriesCount.put(randomCategory, 1);
+                    break;
+                }
+
+                int previousCount = categoriesCount.get(randomCategory);
+                if (previousCount < 2) {
+                    categoryOfDay.put(day, randomCategory);
+                    categoriesCount.put(randomCategory, previousCount + 1);
+                    break;
+                }
+            }
+        }
 
 
     }
 
-    private static Map<Category, List<String>> InitializeMenu() {
+    private static Map<Integer, Category> initializeCategoryForRandom() {
+        Map<Integer, Category> categories = new HashMap<>();
+        categories.put(1, JAPANESE);
+        categories.put(2, KOREAN);
+        categories.put(3, CHINESE);
+        categories.put(4, ASIAN);
+        categories.put(5, WESTERN);
+        return categories;
+    }
+
+    private static Map<Category, List<String>> initializeMenu() {
         Map<Category, List<String>> menusOfCategory = new HashMap<>();
         List<String> japaneseFoods = new ArrayList<>(9);
         japaneseFoods.add("규동");
